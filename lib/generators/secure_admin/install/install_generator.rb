@@ -7,11 +7,11 @@ include Rails::Generators::Migration
 
     argument :_model_name, :type => :string, :required => false, :desc => "Devise user model name"
     argument :_namespace, :type => :string, :required => false, :desc => "RailsAdmin url namespace"
-    desc "RailsAdmin installation generator"
+    desc "Secure Admin installation generator"
 
     def install
       routes = File.open(Rails.root.join("config/routes.rb")).try :read
-      initializer = (File.open(Rails.root.join("config/initializers/rails_admin.rb")) rescue nil).try :read
+      initializer = (File.open(Rails.root.join("config/initializers/secure_admin.rb")) rescue nil).try :read
 
       display "Begining, SecureAdmin installaton process!", :blue
       display "Secure Admin needs Devise :"
@@ -77,7 +77,7 @@ include Rails::Generators::Migration
       migration_template 'migration.rb', 'db/migrate/create_rails_admin_histories_table.rb' rescue display $!.message
       display "Job's done: migrate, start your server and visit '/#{namespace}'!", :blue
     end
-  end
+  
 
 
 end

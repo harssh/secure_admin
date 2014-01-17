@@ -1,4 +1,8 @@
-class SecureAdmin::InstallGenerator < Rails::Generators::NamedBase
+require 'rails/generators'
+require File.expand_path('../utils', __FILE__)
+
+
+class SecureAdmin::InstallGenerator < Rails::Generators::Base
   source_root File.expand_path('../templates', __FILE__)
 
 include Rails::Generators::Migration

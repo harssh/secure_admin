@@ -1,4 +1,4 @@
-module RailsAdmin
+module SecureAdmin
   module Generators
     module Utils
       module InstanceMethods

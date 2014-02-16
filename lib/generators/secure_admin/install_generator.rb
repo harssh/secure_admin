@@ -20,7 +20,7 @@ module SecureAdmin
 
         display "Begining, SecureAdmin installaton process!", :blue
         display "Secure Admin needs Devise :"
-        display "Checking for a devise..."
+        display "Checking for devise..."
         unless defined?(Devise)
           display "Adding devise gem to your Gemfile:"
           append_file "Gemfile", "\n", :force => true
@@ -42,6 +42,11 @@ module SecureAdmin
       namespace = ask_for("Where do you want to mount secure_admin?", "admin", _namespace)
       gsub_file "config/routes.rb", /mount SecureAdmin::Engine => \'\/.+\', :as => \'secure_admin\'/, ''
       route("mount SecureAdmin::Engine => '/#{namespace}', :as => 'secure_admin'")
+
+      unless routes.index("devise_for")
+        model_name = ask_for("")
+        
+      end
 
 
       end
